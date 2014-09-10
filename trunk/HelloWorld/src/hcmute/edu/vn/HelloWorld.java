@@ -1,6 +1,6 @@
 package hcmute.edu.vn;
 /**
- * @author Group 05 - OOAD_Saturday
+ * @author jwd-2014-class01-group12
  *
  */
 public class HelloWorld {
