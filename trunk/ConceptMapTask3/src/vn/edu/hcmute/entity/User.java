@@ -12,8 +12,8 @@ public class User {
 	@Column (name = "UserID")
 	private long userID;
 	
-	@Column (name = "UserName", nullable = false)
-	private String userName;
+	@Column (name = "Email", nullable = false)
+	private String email;
 	
 	@Column (name = "PassWd", nullable = false)
 	private String passWd;
@@ -61,11 +61,11 @@ public class User {
 	public void setUserID(long userID) {
 		this.userID = userID;
 	}
-	public String getUserName() {
-		return userName;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPassWd() {
 		return passWd;
