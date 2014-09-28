@@ -10,12 +10,52 @@
 
 <!-- Custom styles for this template -->
 <link href="../css/signin.css" rel="stylesheet">
-
 <!-- Custom styles for this template -->
 <link href="../css/cover.css" rel="stylesheet">
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.js"></script>
+
+<script type="text/javascript">
+function validate() {
+	var email = $("#email").val();
+	var pass = $("#pass").val();
+	if (email.trim() == "") {
+		$("#error").html("Please enter the Email.");
+		$("#email").focus();
+		return false;
+	}
+	if (pass.trim() == "") {
+		$("#error").html("Please enter the Password.");
+		$("#pass").focus();
+		return false;
+	}
+	return true;
+}
+function login() {
+	if(validate()){
+		var email = $("#email").val();
+		var pass = $("#pass").val();
+		var permission = $('input[name="login-as"]:checked').val();
+		$.ajax({
+			url : "UserController?email=" + email
+					+ "&pass=" + pass + "&permission=" + permission,
+			type : "POST",
+			success : function(data) {
+				if(data == "Success"){
+					window.location.replace("SuccessfulLogin.jsp");
+					
+				} else {
+					$("#error").html("Username or Password is invalid!");
+				}
+			},
+			error : function(data) {
+				alert("fail");
+			}
+		});
+	}
+}
+</script>
 </head>
 <body>
 	<div class="site-wrapper">
@@ -38,16 +78,16 @@
 					<form class="form-signin" role="form">
 						<h3 class="form-signin-heading">Please login</h3>
 
-						<input type="email" class="form-control"
-							placeholder="Email address" required autofocus> <input
-							type="password" class="form-control" placeholder="Password"
-							required> <label>Login as: </label> 
+						<input id="email" type="email" class="form-control" placeholder="Email address" required autofocus> 
+							<input id="pass" type="password" class="form-control" placeholder="Password" required> 
+							<label>Login as: </label> 
 							<input type="radio" name="login-as" value="teacher"> Teacher 
 							<input type="radio" name="login-as" value="student" checked="checked"> Student 
 							<label class="checkbox">
 							<input type="checkbox" value="remember-me">Remember me
 						</label>
-						<a class="btn btn-lg btn-primary btn-block"  onclick="proccessLogin();">Login</a>
+						<a class="btn btn-lg btn-primary btn-block"  onclick="login();">Login</a>
+						<p id="error" style="color:red; font-size: 14px"></p>
 					</form>
 				</div>
 
@@ -64,17 +104,5 @@
 		</div>
 
 	</div>
-<script type="text/javascript">
-function proccessLogin(){
-	var v = $('input[name="login-as"]:checked').val();
-	//alert(v);
-	if(v.trim() == "student"){
-		window.location.href="listTask.jsp";
-	}
-	else{
-		window.location.href="listAssignment.jsp";
-	}
-}
-</script>
 </body>
 </html>
