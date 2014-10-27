@@ -12,6 +12,19 @@ public class test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		/*ConceptMap cm = new ConceptMap();
+		ConceptMapDAO dao = new ConceptMapDAO();
+		cm=dao.getConceptMapByID("1");
+		System.out.print(cm.getConcepts().size());*/
+		/*ConceptDAO dao = new ConceptDAO();
+		Concept c = new Concept();
+		c=dao.getConceptByID("166f4747-d9e6-4dc3-86f7-10b54133962e");
+		System.out.println(c);
+		System.out.println(c.getConceptName());*/
+		/*Session s = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = s.beginTransaction();
+		t.commit();*/
 /*		User user1 = new User();
 		User user2 = new User();
 		Permission permission1 = new Permission();
