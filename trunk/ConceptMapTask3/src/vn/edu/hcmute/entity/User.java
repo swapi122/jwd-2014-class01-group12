@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements java.io.Serializable{
 	@Id
 	@GeneratedValue
 	@Column (name = "UserID")
@@ -22,33 +22,6 @@ public class User {
 	@JoinColumn (name = "PermissionID", nullable = false)
 	private Permission permission;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	private Set<Assignment> assignment;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	private Set<Task> task;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	private Set<Shared> shared;
-	
-	public Set<Assignment> getAssignment() {
-		return assignment;
-	}
-	public void setAssignment(Set<Assignment> assignment) {
-		this.assignment = assignment;
-	}
-	public Set<Task> getTask() {
-		return task;
-	}
-	public void setTask(Set<Task> task) {
-		this.task = task;
-	}
-	public Set<Shared> getShared() {
-		return shared;
-	}
-	public void setShared(Set<Shared> shared) {
-		this.shared = shared;
-	}
 	public Permission getPermission() {
 		return permission;
 	}

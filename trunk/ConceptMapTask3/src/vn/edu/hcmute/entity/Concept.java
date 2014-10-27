@@ -1,17 +1,17 @@
 package vn.edu.hcmute.entity;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "concept")
-public class Concept {
+public class Concept implements java.io.Serializable{
 	
 	@Id
-	@GeneratedValue
 	@Column(name = "ConceptID")
-	private long conceptID;
+	private String conceptID;
 	
 	@Column(name = "ConceptName", nullable = false)
 	private String conceptName;
@@ -19,18 +19,18 @@ public class Concept {
 	@Column(name = "Document")
 	private String document;
 	
-	@ManyToOne
-	@JoinColumn(name = "ConceptMapID", nullable = false)
-	private ConceptMap conceptMap;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "concept")
-	private Set<Feedback> feedback;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "concept1")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "concept1")
 	private Set<Relation> relation1;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "concept2")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "concept2")
 	private Set<Relation> relation2;
+	
+	@OneToOne(mappedBy="concept")
+	private Node node;
+	
+	@ManyToOne
+	@JoinColumn(name="ConceptMapID")
+	private ConceptMap conceptMap;
 	
 	public ConceptMap getConceptMap() {
 		return conceptMap;
@@ -38,11 +38,11 @@ public class Concept {
 	public void setConceptMap(ConceptMap conceptMap) {
 		this.conceptMap = conceptMap;
 	}
-	public Set<Feedback> getFeedback() {
-		return feedback;
+	public Node getNode() {
+		return node;
 	}
-	public void setFeedback(Set<Feedback> feedback) {
-		this.feedback = feedback;
+	public void setNode(Node node) {
+		this.node = node;
 	}
 	public Set<Relation> getRelation1() {
 		return relation1;
@@ -56,10 +56,10 @@ public class Concept {
 	public void setRelation2(Set<Relation> relation2) {
 		this.relation2 = relation2;
 	}
-	public long getConceptID() {
+	public String getConceptID() {
 		return conceptID;
 	}
-	public void setConceptID(long conceptID) {
+	public void setConceptID(String conceptID) {
 		this.conceptID = conceptID;
 	}
 	public String getConceptName() {

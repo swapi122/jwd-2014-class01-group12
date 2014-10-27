@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="permission")
-public class Permission {
+public class Permission implements java.io.Serializable{
 	
 	@Id
 	@GeneratedValue

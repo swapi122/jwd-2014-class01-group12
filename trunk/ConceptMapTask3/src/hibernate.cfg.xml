@@ -18,15 +18,12 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">validate</property>
  
- 		<mapping class="vn.edu.hcmute.entity.Assignment"/>
+ 		<mapping class="vn.edu.hcmute.entity.Node"/>
+ 		<mapping class="vn.edu.hcmute.entity.Vertice"/>
  		<mapping class="vn.edu.hcmute.entity.Concept"/>
  		<mapping class="vn.edu.hcmute.entity.ConceptMap"/>
- 		<mapping class="vn.edu.hcmute.entity.Feedback"/>
  		<mapping class="vn.edu.hcmute.entity.Permission"/>
  		<mapping class="vn.edu.hcmute.entity.Relation"/>
- 		<mapping class="vn.edu.hcmute.entity.Shared"/>
- 		<mapping class="vn.edu.hcmute.entity.StudentAnswer"/>
- 		<mapping class="vn.edu.hcmute.entity.Task"/>
  		<mapping class="vn.edu.hcmute.entity.User"/>
  		 
     </session-factory>
